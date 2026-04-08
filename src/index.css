@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-lavender: #C9B8F4;
+  --color-rose: #F4B8D8;
+  --color-mint: #B8F4E8;
+  --color-peach: #F4D0B8;
+  --color-sky: #B8D8F4;
+  --color-lilac: #E2B8F4;
+  
+  --color-dark-bg: #1A1A2E;
+  --color-dark-surface: #16213E;
+  --color-light-bg: #FAFAFA;
+  --color-light-surface: #FFFFFF;
+
+  --color-background: var(--bg-color);
+  --color-foreground: var(--fg-color);
+  --color-surface: var(--surface-color);
+  --color-surface-foreground: var(--surface-fg-color);
+  --color-border: var(--border-color);
+  --color-accent: var(--accent-color);
+  --color-accent-foreground: var(--accent-fg-color);
+  --color-muted: var(--muted-color);
+  --color-muted-foreground: var(--muted-fg-color);
+}
+
+@layer base {
+  :root {
+    --bg-color: var(--color-light-bg);
+    --fg-color: #111827;
+    --surface-color: var(--color-light-surface);
+    --surface-fg-color: #1F2937;
+    --border-color: #E5E7EB;
+    --accent-color: var(--color-lavender);
+    --accent-fg-color: #FFFFFF;
+    --muted-color: #F3F4F6;
+    --muted-fg-color: #6B7280;
+  }
+
+  .dark {
+    --bg-color: var(--color-dark-bg);
+    --fg-color: #F9FAFB;
+    --surface-color: var(--color-dark-surface);
+    --surface-fg-color: #F3F4F6;
+    --border-color: #374151;
+    --accent-color: var(--color-lavender);
+    --accent-fg-color: #111827;
+    --muted-color: #1F2937;
+    --muted-fg-color: #9CA3AF;
+  }
+  
+  .theme-lavender { --accent-color: var(--color-lavender); }
+  .theme-rose { --accent-color: var(--color-rose); }
+  .theme-mint { --accent-color: var(--color-mint); }
+  .theme-peach { --accent-color: var(--color-peach); }
+  .theme-sky { --accent-color: var(--color-sky); }
+  .theme-lilac { --accent-color: var(--color-lilac); }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  .pb-safe-bottom {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
